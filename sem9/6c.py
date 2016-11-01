@@ -130,7 +130,6 @@ def print_directory(cwd,k):
                    if os.path.isdir(cwd+'/'+elem):
                        print_directory(cwd+'/'+elem,k+3)
                    os.chdir(cwd)
-
     elif args.max_depth==None:
         for elem in ways:
             if args.all==True:
