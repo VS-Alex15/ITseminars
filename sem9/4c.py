@@ -52,29 +52,75 @@ def print_directory(cwd,k):
     os.chdir(cwd)
     for i in range(k):
         print(' ',end='')
-    print(cwd[cwd.rfind('/')+1:])
+    if args.full_name==False:
+        print(cwd[cwd.rfind('/')+1:])
+    else:
+        print(cwd)
     ways = os.listdir(cwd)
+    #print(ways)
     if (args.folders_only==False):
         for elem in ways:
             if os.path.isfile(cwd+'/'+elem):
-                if args.include==None and args.exclude==None:
-                    for i in range(k+3):
-                        print(' ',end='')
-                    print(elem)
+                if args.all==True:
+                    if args.include==None and args.exclude==None:
+                        for i in range(k+3):
+                            print(' ',end='')
+                        if args.full_name==True:
+                            print(cwd+'/'+elem)
+                        else:
+                            print(elem)
+                    else:
+                         if args.exclude==None and args.include!=None:
+                             if elem.find(args.include)!=-1:
+                                 for i in range(k+3):
+                                     print(' ',end='')
+                                 if args.full_name==True:
+                                     print(cwd+'/'+elem)
+                                 else:
+                                     print(elem)
+                         if args.exclude!=None and args.include==None:
+                             if elem.find(args.exclude)==-1:
+                                 for i in range(k+3):
+                                     print(' ',end='')
+                                 if args.full_name==True:
+                                     print(cwd+'/'+elem)
+                                 else:
+                                     print(elem)
                 else:
-                     if args.exclude==None and args.include!=None:
-                         if elem.find(args.include)!=-1:
-                             for i in range(k+3):
-                                 print(' ',end='')
-                             print(elem)
-                     if args.exclude!=None and args.include==None:
-                         if elem.find(args.exclude)==-1:
-                             for i in range(k+3):
-                                 print(' ',end='')
-                             print(elem)
+                    if elem[0]!='.':
+                        if args.include==None and args.exclude==None:
+                            for i in range(k+3):
+                                print(' ',end='')
+                            if args.full_name==True:
+                                print(cwd+'/'+elem)
+                            else:
+                                print(elem)
+                        else:
+                             if args.exclude==None and args.include!=None:
+                                 if elem.find(args.include)!=-1:
+                                     for i in range(k+3):
+                                         print(' ',end='')
+                                     if args.full_name==True:
+                                         print(cwd+'/'+elem)
+                                     else:
+                                         print(elem)
+                             if args.exclude!=None and args.include==None:
+                                 if elem.find(args.exclude)==-1:
+                                     for i in range(k+3):
+                                         print(' ',end='')
+                                     if args.full_name==True:
+                                         print(cwd+'/'+elem)
+                                     else:
+                                         print(elem)
     for elem in ways:
-        if os.path.isdir(cwd+'/'+elem):
-            print_directory(cwd+'/'+elem,k+3)
-        os.chdir(cwd)
+        if args.all==True:
+            if os.path.isdir(cwd+'/'+elem):
+                print_directory(cwd+'/'+elem,k+3)
+            os.chdir(cwd)
+        else:
+            if elem[0]!='.':
+               if os.path.isdir(cwd+'/'+elem):
+                   print_directory(cwd+'/'+elem,k+3)
+               os.chdir(cwd)
 print(need_dir)
 print_directory(need_dir,2)
