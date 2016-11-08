@@ -36,13 +36,12 @@ class Vector:
     def __str__(self):
         return str(self.x)+','+str(self.y)
 
+    def g_vector(self,g):   #умножение вектора на число g (type: float)
+        return Vector(str(self.x*g)+','+str(self.y*g))
 n = int(input())
 
-far_point = Vector()
+centre_mass = Vector()
 
 for i in range(n):
     point = Vector(input())
-    if abs(point)>abs(far_point):
-        far_point = point
-
-print(str(far_point))
+    centre_mass += point

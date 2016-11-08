@@ -4,16 +4,16 @@ class Vector:
         self.x = float(x)
         self.y = float(y)
     def __add__(self, other):
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(str(self.x + other.x)+','+ str(self.y + other.y))
 
     def __iadd__(self, other):
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(str(self.x + other.x)+','+ str(self.y + other.y))
 
     def __sub__(self, other):
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(str(self.x - other.x)+','+ str(self.y - other.y))
 
     def __isub__(self, other):
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(str(self.x - other.x)+','+ str(self.y - other.y))
 
     def __mul__(self, other):            #скалярное произведение
         return (self.x*other.x+self.y*other.y)
@@ -35,4 +35,3 @@ class Vector:
 
     def __str__(self):
         return str(self.x)+','+str(self.y)
-
