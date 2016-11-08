@@ -38,13 +38,38 @@ class Vector:
 
     def g_vector(self,g):   #умножение вектора на число g (type: float)
         return Vector(str(g*self.x)+','+str(g*self.y))
+
+    def x(self):
+        return self.x
+
+    def y(self):
+        return self.y
+
+
+def perimetr(a,b,c):  # рассчет периметра точек с радиус-векторами a,b,c
+    assert a!=b and b!=c and a!=c
+    return abs(a-b)+abs(b-c)+abs(a-c)
+
 n = int(input())
 
-centre_mass = Vector()
+points = []
 
 for i in range(n):
-    point = Vector(input())
-    centre_mass += point
+    points.append(Vector(input()))
 
-print(str(centre_mass.g_vector(g=1/n)))
+P=0
 
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            if not(points[i].x*points[j].y==points[i].y*points[j].x
+               and points[i].x*points[k].y==points[i].y*points[k].x
+               and points[j].x*points[k].y==points[j].y*points[k].x):
+                w = perimetr(points[i],points[j],points[k])
+            else:
+                w = 0
+            if w>P:
+                P = w
+if P==0: print('No triangle')
+else:
+    print(P)
