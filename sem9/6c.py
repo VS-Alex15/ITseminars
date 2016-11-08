@@ -59,7 +59,7 @@ def print_directory(cwd,k):
     os.chdir(cwd)
     for i in range(k):
         print(' ',end='')
-    if args.full_name==False:
+    if not args.full_name:
         print(cwd[cwd.rfind('/')+1:])
     else:
         print(cwd)
