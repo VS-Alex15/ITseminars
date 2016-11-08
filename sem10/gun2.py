@@ -168,15 +168,17 @@ def new_game(event=''):
             if b.hittest(t1) and t1.live:
                 t1.live = 0
                 t1.hit()
-                canv.bind('<Button-1>', '')
-                canv.bind('<ButtonRelease-1>', '')
-                canv.itemconfig(screen1, text='Вы уничтожили цель 1 за ' + str(bullet) + ' выстрелов')
+                if t2.live == 0:
+                    canv.bind('<Button-1>', '')
+                    canv.bind('<ButtonRelease-1>', '')
+                    canv.itemconfig(screen1, text='Вы уничтожили цели за ' + str(bullet) + ' выстрелов')
             if b.hittest(t2) and t2.live:
                 t2.live=0
                 t2.hit()
-                canv.bind('<Button-1>', '')
-                canv.bind('<ButtonRelease-1>', '')
-                canv.itemconfig(screen1, text='Вы уничтожили цель 2 за ' + str(bullet) + ' выстрелов')
+                if t1.live==0:
+                    canv.bind('<Button-1>', '')
+                    canv.bind('<ButtonRelease-1>', '')
+                    canv.itemconfig(screen1, text='Вы уничтожили цели за ' + str(bullet) + ' выстрелов')
 
         canv.update()
         time.sleep(0.03)
