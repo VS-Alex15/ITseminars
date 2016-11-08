@@ -49,7 +49,7 @@ class ball():
             self.vy*=-0.7
             self.y -= self.vy
         else:
-            self.vy -= 2.5
+            self.vy -= 5
 
         self.set_coords()
     def hittest(self, ob):
