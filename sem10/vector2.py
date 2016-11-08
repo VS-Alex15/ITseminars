@@ -36,3 +36,13 @@ class Vector:
     def __str__(self):
         return str(self.x)+','+str(self.y)
 
+n = int(input())
+
+far_point = Vector()
+
+for i in range(n):
+    point = Vector(input())
+    if abs(point)>abs(far_point):
+        far_point = point
+
+print(str(far_point))
