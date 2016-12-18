@@ -8,7 +8,7 @@ def left_shift(a):
        элементов в непустом массиве влево
     '''
     assert a!=[]
-
+    
     n = len(a)
 
     tmp = a[0]
@@ -18,4 +18,4 @@ def left_shift(a):
 
 left_shift(list)
 
-print(*list)
+print(*list)    
