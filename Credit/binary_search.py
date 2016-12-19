@@ -1,15 +1,15 @@
 x = int(input())
 a = [int(x) for x in input().split()]
-a.sort()
 
 def bin_search(x,a):
+    assert a==sorted(a)
     l = 0
     r = len(a)-1
     k = -1
-    while l<r:
+    while r-l>1:
         m = (l+r)//2
         if a[m]<x:
-            l = m+1
+            l = m
         else: r = m
     if a[r]==x:
         return r
