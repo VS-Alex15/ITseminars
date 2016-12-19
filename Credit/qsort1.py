@@ -17,4 +17,5 @@ def qsort(a):
 a = [int(x) for x in input().split()]
 
 a = qsort(a)
+
 print(*a)
